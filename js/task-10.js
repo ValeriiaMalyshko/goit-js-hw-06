@@ -1,33 +1,34 @@
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 }
-const input = document.querySelector (`[type="number"]`) ;
-const createBtn = document.querySelector (`[data-create]`) ;
-const destroyBtn = document.querySelector (`[data-destroy]`) ;
+const input = document.querySelector ('[type="number"]') ;
+console.log (input)
+const createBtn = document.querySelector ('[data-create]') ;
+console.log (createBtn)
+const destroyBtn = document.querySelector ('[data-destroy]') ;
+console.log (destroyBtn)
 const box = document.querySelector ("#boxes") ;
+console.log (box)
 let amount = 0;
 input.addEventListener ("input", onInput) ;
 function onInput(event) {
-  amount=event.target.value;
+  amount=event.currentTarget.value;
 };
 
 createBtn.addEventListener ("click", onCreateBtn) ;
 function onCreateBtn () {
-  for (let i=1; i <= amount; i+=1) {
+  for (let i=0; i < amount; i+=1) {
+    const bgColor = getRandomHexColor();
     const divEl= document.createElement("div") ;
-    divEl.classList.add('box__item');
+    divEl.style.backgroundColor = bgColor;
+    divEl.style.width = 20 + i*10 + "px";
+    divEl.style.height = 20 + i*10 + "px";
     box.append(divEl) ;
-    // document.querySelector('box__item').textContent = i;
-    document.querySelector('box__item').style.background= `${getRandomHexColor()}`;
-    document.querySelector('box__item').style.width= `${20+(i * 10)}px`;
-    document.querySelector('box__item').style.height= `${20+(i * 10)}px`;
   }
 } ;
 destroyBtn.addEventListener ("click", onDestroyBtn) ;
 function onDestroyBtn () {
-  for (let i=1; i <= amount; i+=1) {
-    document.querySelector('box__item').remove() ;
-  }
+  boxes.innerHTML = "";
   input.value=0;
 };
 
