@@ -1,7 +1,7 @@
 const inputEl = document.querySelector('input');
 
-let font = document.getElementById("font-size-control");
-let text = document.getElementById("text");
+let font = document.querySelector("#font-size-control");
+let text = document.querySelector("#text");
 
 inputEl.addEventListener('input', onInputChange) ;
 
